@@ -1,0 +1,29 @@
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .button-row {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+  }
+  
+  .answer-button {
+    background-color: silver;
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 5px;
+    width: 45%;
+
+    &:hover {
+      background-color: rgb(134, 134, 134);
+    }
+  }
+  

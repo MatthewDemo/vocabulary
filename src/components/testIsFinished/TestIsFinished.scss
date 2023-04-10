@@ -1,0 +1,19 @@
+.test-finished-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .progress-bar-outer {
+    width: 80%;
+    height: 20px;
+    background-color: gray;
+    margin-top: 10px;
+  }
+  
+  .progress-bar-inner {
+    height: 100%;
+    background-color: green;
+  }
+  
