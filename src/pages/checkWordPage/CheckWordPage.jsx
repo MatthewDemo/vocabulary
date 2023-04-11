@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import "./CheckWordPage.scss";
 import TestIsFinished from "../../components/testIsFinished/TestIsFinished";
 import Question from "../../components/question/Question";
@@ -34,12 +34,20 @@ const CheckWordPage = () => {
     dispatch(setRandomWord(propertyName));
     dispatch(setRandomWordUkr(propertyNameUkr));
 
-    const answerOptions = allWords
+    let answerOptions = new Set(allWords
       .filter((word) => word[1] !== propertyName)
       .sort(() => 0.5 - Math.random())
       .slice(0, 3)
-      .map((word) => Object.values(word));
-    answerOptions.push(Object.values(allWords[randomIndex]));
+      .map((word) => Object.values(word))
+      .flat()
+    );
+    answerOptions.add(propertyNameUkr);
+    while (answerOptions.size < 4) {
+      const randomAnswerIndex = Math.floor(Math.random() * allWords.length);
+      const randomAnswer = Object.values(allWords[randomAnswerIndex])[1];
+      answerOptions.add(randomAnswer);
+    }
+    answerOptions = Array.from(answerOptions);
     shuffleArray(answerOptions);
     dispatch(setAnswerOptions(answerOptions));
   }, [allWords, currentQuestionIndex, dispatch]);
