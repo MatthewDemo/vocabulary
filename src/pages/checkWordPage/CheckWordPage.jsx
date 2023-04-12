@@ -34,14 +34,14 @@ const CheckWordPage = () => {
     dispatch(setRandomWord(propertyName));
     dispatch(setRandomWordUkr(propertyNameUkr));
 
-    let answerOptions = new Set(allWords
-      .filter((word) => word[1] !== propertyName)
-      .sort(() => 0.5 - Math.random())
-      .slice(0, 3)
-      .map((word) => Object.values(word))
-      .flat()
+    let answerOptions = new Set(
+      allWords
+        .filter((word) => word[1] !== propertyName)
+        .sort(() => 0.5 - Math.random())
+        .slice(0, 3)
+        .map((word) => Object.values(word))
+        .flat()
     );
-    answerOptions.add(propertyNameUkr);
     while (answerOptions.size < 4) {
       const randomAnswerIndex = Math.floor(Math.random() * allWords.length);
       const randomAnswer = Object.values(allWords[randomAnswerIndex])[1];

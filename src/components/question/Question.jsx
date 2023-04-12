@@ -18,7 +18,7 @@ const Question = () => {
 
   const handleAnswerButtonClick = (answer) => {
     if (
-      answer.toString().toUpperCase() === randomWordUkr.toString().toUpperCase()
+      answer && answer.toString().toUpperCase() === randomWordUkr.toString().toUpperCase()
     ) {
       dispatch(setSuccessLevel(successLevel + 1));
     } else {
@@ -36,7 +36,7 @@ const Question = () => {
             className="answer-button"
             onClick={() => handleAnswerButtonClick(answer)}
           >
-            {answer.toString().toUpperCase()}
+            {answer ? answer.toString().toUpperCase() : 'ПЕРУКАРНЯ'}
           </button>
         ))}
       </div>
