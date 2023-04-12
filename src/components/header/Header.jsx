@@ -8,6 +8,7 @@ const Header = () => {
         <Link to="/">All words</Link>
         <Link to="/add">Add a new word</Link>
         <Link to="/check">Check your knowledges</Link>
+        <Link to="/history">History</Link>
       </header>
   )
 }

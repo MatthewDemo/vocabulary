@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   setCurrentQuestionIndex,
   setSuccessLevel,
-} from "../../redux/slices/checkWordSlice";
+} from "../../../redux/slices/checkWordSlice";
 
 const Question = () => {
   const dispatch = useDispatch();

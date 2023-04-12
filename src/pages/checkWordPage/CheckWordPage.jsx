@@ -1,17 +1,20 @@
 import { useEffect } from "react";
 import "./CheckWordPage.scss";
-import TestIsFinished from "../../components/testIsFinished/TestIsFinished";
-import Question from "../../components/question/Question";
+import TestIsFinished from "../../components/checkWord/testIsFinished/TestIsFinished";
+import Question from "../../components/checkWord/question/Question";
 import { useSelector, useDispatch } from "react-redux";
 import {
   setRandomWord,
   setRandomWordUkr,
   setAnswerOptions,
+  setCurrentQuestionIndex,
+  setSuccessLevel,
+  addGameToHistory,
 } from "../../redux/slices/checkWordSlice";
 
 const CheckWordPage = () => {
   const dispatch = useDispatch();
-
+  const successLevel = useSelector((state) => state.checkWord.successLevel);
   const allWords = useSelector((state) => state.question.allWords);
   const currentQuestionIndex = useSelector(
     (state) => state.checkWord.currentQuestionIndex
@@ -67,6 +70,17 @@ const CheckWordPage = () => {
     shuffleArray(currentAnswerOptions);
   }
 
+  const handleRestart = () => {
+    const now = new Date().toISOString()
+    const gameResult = {
+      date: now,
+      score: successLevel,
+    };
+    dispatch(addGameToHistory(gameResult));
+    dispatch(setCurrentQuestionIndex(0));
+    dispatch(setSuccessLevel(0));
+  };
+
   return (
     <div>
       {currentQuestion ? (
@@ -76,6 +90,9 @@ const CheckWordPage = () => {
       ) : (
         <TestIsFinished />
       )}
+      <button onClick={handleRestart} className="restart-button">
+        Start new game
+      </button>
     </div>
   );
 };

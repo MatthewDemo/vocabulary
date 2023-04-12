@@ -6,6 +6,7 @@ const initialState = {
   answerOptions: [],
   currentQuestionIndex: 0,
   successLevel: 0,
+  gameHistory: [],
 };
 export const checkWordSlice = createSlice({
   name: "checkWord",
@@ -26,8 +27,12 @@ export const checkWordSlice = createSlice({
     setSuccessLevel: (state, action) => {
       state.successLevel = action.payload;
     },
+    addGameToHistory: (state, action) => {
+      state.gameHistory.push(action.payload);
+    },
   },
 });
+
 
 export const {
   setRandomWord,
@@ -35,6 +40,7 @@ export const {
   setAnswerOptions,
   setCurrentQuestionIndex,
   setSuccessLevel,
+  addGameToHistory
 } = checkWordSlice.actions;
 
 export default checkWordSlice.reducer;
