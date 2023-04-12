@@ -42,6 +42,7 @@ const CheckWordPage = () => {
         .map((word) => Object.values(word))
         .flat()
     );
+    answerOptions.add(propertyNameUkr);
     while (answerOptions.size < 4) {
       const randomAnswerIndex = Math.floor(Math.random() * allWords.length);
       const randomAnswer = Object.values(allWords[randomAnswerIndex])[1];

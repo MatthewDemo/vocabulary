@@ -36,7 +36,7 @@ const Question = () => {
             className="answer-button"
             onClick={() => handleAnswerButtonClick(answer)}
           >
-            {answer ? answer.toString().toUpperCase() : 'ПЕРУКАРНЯ'}
+            {answer.toString().toUpperCase()}
           </button>
         ))}
       </div>
